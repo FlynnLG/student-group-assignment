@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <title>TeachDesk | Add Class</title>
+    <!--Google Font-->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <!--Font Awesome CDN-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <!--Stylesheet-->
+    <style media="screen">
+    	*,
+*:before,
+*:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    background: #4cabff;
+    max-height: 100vh;
+    max-width: 100vw;
+    overflow: hidden;
+}
+h1{
+    
+    font-family: 'Poppins',sans-serif;
+    font-size: 75px;
+    font-weight: 800;
+    margin-top: 4vh;
+    text-align:center;
+    color: rgb(0, 0, 0);
+}
+.container{
+    width: 40%;
+    min-width: 450px;
+    max-block-size: 500px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+		background: white;
+		border-radius: 10px;
+}
+
+#newstudent{
+    position: relative;
+    padding: 30px 20px;
+}
+#newstudent input{
+    width: 75%;
+    height: 45px;
+    font-family: 'Poppins',sans-serif;
+    font-size: 15px;
+    border: 2px solid #d1d3d4;
+    padding: 12px;
+    color: #111111;
+    font-weight: 500;
+    position: relative;
+    border-radius: 5px;
+}
+#newstudent input:focus{
+    outline: none;
+    border-color: #0d75ec;
+}
+#input2{
+    top: 10px
+}
+
+#newstudent #groupSize{
+    top: 10px;
+    width: 60px;
+    text-align: center;
+}
+
+#continue{
+    position: relative;
+    float: right;
+    width: 20%;
+    height: 45px;
+    top: 74vh;
+    right: 1vw;
+    border-radius: 5px;
+    font-family: 'Poppins',sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    background-color: #0dec62;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    outline: none;
+}
+#newstudent #add{
+    position: relative;
+    float: right;
+    width: 20%;
+    top: 10px;
+    height: 45px;
+    border-radius: 5px;
+    font-family: 'Poppins',sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    background-color: #0d75ec;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    outline: none;
+}
+#newstudent img{
+    position: relative;
+    width: 35px;
+    height: 35px;
+    top: 22px;
+    cursor: pointer;
+}
+#students{
+    background-color: #ffffff;
+    padding: 30px 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    width: 100%;
+    max-height: 10.5cm;
+    position: relative;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.student{
+    background-color: #0d75ec4f;
+    height: 50px;
+    margin-bottom: 8px;
+    padding: 5px 10px;
+    display: flex;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: flex-start;
+    border: 1px solid #939697;
+    cursor: pointer;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+.student span{
+    font-family: 'Poppins',sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    margin-left: 10px;
+}
+.student button{
+    background-color: #ff2844;
+    color: #ffffff;
+    height: 100%;
+    width: 40px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    margin-left: auto;
+}
+.student img{
+    width: 25px;
+    height: 25px;
+    opacity: 0.7;
+}
+    </style>
+</head>
+<body>
+    <h1>Add Class</h1>
+    <div class="container">
+        <div id="newstudent">
+            <input id="input" type="text" placeholder="Klassen-/Kursnamen hinzufügen...">
+            <input id="input2" type="text" placeholder="Schülernamen hinzufügen...">
+            <button id="add">Schüler Hinzufügen</button>
+        </div>
+
+        <div id="students"></div>
+    </div>
+    <button id="continue">Klasse/Kurs speichern</button>
+    <!--Script-------------------------------------------------------------->
+    <script type="text/javascript">
+
+        studentCount = 0;
+        groupSize = 2;
+        studentList = []
+
+        var specialUser = ["Lennard", "Valentino", "Paul", "Clemens", "Linus", "Richard", "Andras", "Magnus", "Julius"];
+        document.querySelector('#newstudent input').value = null //Setze das Input Feld auf null für einen Namen
+        document.querySelector('#continue').style.backgroundColor = "#ff444e"; //Setzte continue Button auf Rote Farbe
+
+        document.querySelector('#continue').onclick = function(){
+        if (studentCount < groupSize){
+            document.querySelector('#continue').style.backgroundColor = "#ff444e";
+            alert('Es werden mindestend 2 Schüler gebraucht um Klassen/Kurse zu erstellen!');
+        }else{
+            creatingClass();
+        }
+        //TODO: Creating the Group creating Thing :)
+    }
+
+document.querySelector('#add').onclick = function(){ //TODO: Mit Enter Schülername auch hinzufügen! Angenehmer
+    var _donevar = false;
+    input = document.querySelector('#input2').value
+
+    if(document.querySelector('#input2').value.length == 0){
+        alert("Sie haben keinen Schülernamen eingegeben!")
+        _donevar = true
+    }
+    //Special User #################################################################################################
+    if(input == "Lennard"){addSpecialUser("crown"); ; _donevar = true} //Lennard 
+    if(input == specialUser[1]){addSpecialUser("astronaut"); _donevar = true} //Valentino
+    if(input == specialUser[2]){addSpecialUser("undercover"); _donevar = true} //Paul
+    if(input == specialUser[3]){addSpecialUser("ghost"); _donevar = true} //Clemens
+    if(input == specialUser[4]){addSpecialUser("ninja"); _donevar = true} //Linus
+    if(input == specialUser[5]){addSpecialUser("diktator"); _donevar = true} //Richard
+    if(input == specialUser[6]){addSpecialUser("snowman"); _donevar = true} //Andras
+    if(input == specialUser[7]){addSpecialUser("student"); _donevar = true} //Magnus
+    if(input == specialUser[8]){addSpecialUser("hottub"); _donevar = true} //Julius
+    //Normal User #################################################################################################
+    else{
+        if(_donevar == false){
+            addStudent();
+        }
+    }
+}
+
+
+function addStudent(){
+    //TODO: Remove InnerHTML because Security!
+    studentName = document.querySelector('#input2').value;
+        studentCount ++;
+        changecontinueButton()
+        document.querySelector('#students').innerHTML += `
+            <div class="student">
+                <img src="icons/user.svg" id="userIcon">
+                <span id="studentname">
+                    ${studentName}
+                </span>
+                <button class="delete">
+                    <i class="far fa-trash-alt"></i>
+                </button>
+            </div>
+        `;
+        studentList.push(studentName)
+        var current_students = document.querySelectorAll(".delete");
+        for(var i=0; i<current_students.length; i++){
+            current_students[i].onclick = function(){
+                studentCount --;
+                changecontinueButton()
+                this.parentNode.remove();
+         }
+            document.querySelector('#input2').value = null
+    }
+
+}
+
+function addSpecialUser(role){
+    studentName = document.querySelector('#input2').value;
+        studentCount ++;
+        changecontinueButton()
+        document.querySelector('#students').innerHTML += `
+            <div class="student">
+                <img src="icons/roles/${role}.svg" id="userIcon">
+                <span id="studentname">
+                    ${studentName}
+                </span>
+                <button class="delete">
+                    <i class="far fa-trash-alt"></i>
+                </button>
+            </div>
+        `;
+        studentList.push(studentName)
+        var current_students = document.querySelectorAll(".delete");
+        for(var i=0; i<current_students.length; i++){
+            current_students[i].onclick = function(){
+                studentCount --;
+                changecontinueButton()
+                this.parentNode.remove();
+            }
+            document.querySelector('#input2').value = null
+        }
+}
+
+function loadStudentList(listName, state){ //TODO: Create laoding and saving Students in JSON
+    //state == save/load
+}
+
+function addInfobox(message, state){ //TODO: Add Infobox
+    //state == info/warn/err
+}
+
+
+
+function changecontinueButton(){
+    if (studentCount < groupSize && document.querySelector('#input').value.length == 0){
+            document.querySelector('#continue').style.backgroundColor = "#ff444e";
+    }else document.querySelector('#continue').style.backgroundColor = "#0dec62";
+}
+
+function creatingClass(){
+    if(document.querySelector('#input').value.length == 0){alert("Bitte geben sie dem Kurs/Klasse einen Namen!")}
+    else{
+    className = document.querySelector('#input').value;
+    console.log('In ' + className + ' are ' + studentCount + ' Students!')
+    console.table(studentList)
+    //Saving Group
+    //Create new json array
+    }
+}
+    </script>
+</body>
+</html>
