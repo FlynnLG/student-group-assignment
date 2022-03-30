@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Things</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <style type="text/css">
+        .container {
+            position: absolute;
+            left: 50%;
+            top: 35%;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            width: 40%;
+            height: 40%;
+            text-align: center;
+            font-family: 'Poppins',sans-serif;
+        }
+
+        .layout {
+            width: 100%;
+            height: 100%;
+
+            display: grid;
+            grid:
+                "collum1 collum2" 1fr
+                "collum3 collum4" 1fr
+                / 1fr 1fr;
+            gap: 6% 5%;
+        }
+
+        .collum1 { 
+            grid-area: collum1;
+            text-align: center;
+            border-radius: 12px;
+            background: rgb(131, 160, 255);
+            cursor: pointer;
+            transition: 0.5s;
+            -webkit-user-drag: none;
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            -webkit-user-drag: none;
+        }
+        .collum2 { 
+            grid-area: collum2; 
+            text-align: center;
+            border-radius: 12px;
+            background: rgb(131, 160, 255);
+            cursor: pointer;
+            transition: 0.5s;
+            -webkit-user-drag: none;
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            -webkit-user-drag: none;
+        }
+        .collum3 { 
+            grid-area: collum3; 
+            text-align: center;
+            border-radius: 12px;
+            background: rgb(131, 160, 255);
+            cursor: pointer;
+            transition: 0.5s;
+            -webkit-user-drag: none;
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            -webkit-user-drag: none;
+        }
+        .collum4 { 
+            grid-area: collum4; 
+            text-align: center;
+            border-radius: 12px;
+            background: rgb(131, 160, 255);
+            cursor: pointer;
+            transition: 0.5s;
+        }
+
+        img{
+            margin-top: 9%;
+            height: calc(100% - 100px);
+            width: calc(100% - 100px);
+            -webkit-user-drag: none;
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            -webkit-user-drag: none;
+        }
+
+        #text{
+            font-weight: 500;
+            font-size: 100%;
+        }
+
+        .back-{
+            position: absolute;
+            
+            text-align: center;
+            margin-right: 50%;
+            left: calc(50% - 0.75cm);
+            bottom: 10%;
+        }
+        .back-img{
+            height: 1cm;
+            width: 1cm;
+            top: 50%;
+            border-radius: 50%;
+            position: absolute;
+            text-align: center;
+            margin-right: 50%;
+            left: 50%;
+            bottom: 10%;
+            transition: 0.3s;
+            -webkit-user-drag: none;
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            -webkit-user-drag: none;
+        }
+        .back-img:hover{
+            height: 1.1cm;
+            width: 1.1cm;
+            cursor: pointer;
+        }
+
+        #gridHover:hover{
+            background: rgb(105, 139, 250);
+        }
+        .back{
+            position: absolute;
+            width: 1cm;
+            height: 1cm;
+            top: calc(50% - 0.5cm);
+            transition: 0.5s;
+            cursor: pointer;
+        }
+        .back:hover{
+            width: 1.2cm;
+            height: 1.2cm;
+            top: calc(50% - (1.2cm/2));
+        }
+    </style>
+</head>
+<body>
+    <div class="container-system" style="width: 100%; height: 0.8cm; top: 0">
+        <p style="font-size:10px; text-align:center; font-family: 'Poppins',sans-serif;">TeachDesk - Version 0.3.2</p>
+    </div>
+
+    <div class="container">
+        <h1>Was sollen wir hinzufügen?</h1>
+
+        <section class="layout">
+            <div id="gridHover" class="collum1">
+                <img src="../icons/user-group.svg">
+                <p id="text">Neue Klasse hinzufügen</p>
+            </div>
+            <div id="gridHover" class="collum2">
+                <img src="../icons/user-group.svg">
+                <p id="text">Neue Hausaufgabe hinzufügen</p>
+            </div>
+            <div id="gridHover" class="collum3">
+                <img src="../icons/user-group.svg">
+                <p id="text">Neuen Termin hinzufügen</p>
+            </div>
+            <div id="gridHover" class="collum4">
+                <img src="../icons/user-group.svg">
+                <p id="text">Neue Note hinzufügen</p>
+            </div>
+          </section>   
+    </div>
+    <div class="back-">
+        <img class="back-img" src="../icons/arrow-back.svg" onClick="window.location.href = './index.html';">
+    </div>
+    <img class="back"  onclick="window.location.href = './index.html'" src="../icons/arrow-back.svg">
+</body>
+</html>
