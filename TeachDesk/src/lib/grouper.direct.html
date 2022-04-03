@@ -221,6 +221,42 @@ h3{
     height: 25px;
     opacity: 0.7;
 }
+.group{
+    background-color: rgba(255, 165, 9, 0.445);
+    height: 50px;
+    margin-bottom: 8px;
+    padding: 5px 10px;
+    display: flex;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: flex-start;
+    border: 1px solid #939697;
+    cursor: pointer;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+.group span{
+    font-family: 'Poppins',sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    margin-left: 10px;
+}
+.group button{
+    background-color: #ff2844;
+    color: #ffffff;
+    height: 100%;
+    width: 40px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    margin-left: auto;
+}
+.group img{
+    width: 25px;
+    height: 25px;
+    opacity: 0.7;
+}
 .back{
     position: absolute;
     width: 1cm;
@@ -367,7 +403,7 @@ function getAllStudents(){
         }
         console.log(studentGroupString);
         document.querySelector('#studentsResult').innerHTML += `
-            <div class="student">
+            <div class="group">
                 <img src="../icons/user-group.svg" id="userIcon">
                 <span id="studentname">` + `
                     ${studentGroupString}
