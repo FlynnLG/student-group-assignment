@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeachDesk</title>
+    <!--Google Font-->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <style type="text/css">
+        .body{
+            height: 100vh;
+            background-color: #ffffff;
+            max-height: 100vh;
+            max-width: 100vw;
+            overflow: hidden;
+            font-family: 'Poppins',sans-serif;
+            
+        }
+        img{
+            -webkit-user-drag: none;
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            -webkit-user-drag: none;
+        }
+        .line{
+            background-color: #0a0a0a;
+            width: 99vw;
+            height: 3px;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        #icon{
+            -webkit-user-drag: none;
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            -webkit-user-drag: none;
+            -webkit-app-region: drag;
+            width: 15%;
+            height: 15%;
+            max-width: 4.5cm;
+            max-height: fit-content;
+        }
+        #add{
+            position: absolute;
+            width: 4cm;
+            height: 1.2cm;
+            background: #092cc7;
+            border: none;
+            border-radius:5px;
+            font-family: 'Poppins',sans-serif;
+            font-size: 16px;
+            color: white;
+            left: calc(100% - 4.5cm);
+            margin-bottom: 89%;
+            cursor: pointer;
+            transition: 0.5s;
+        }
+
+        #add:hover{
+            box-shadow: 0px 0px 30px 6px rgba(0, 58, 208, 0.63);
+        }
+
+        .container{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            width: 100vw;
+        }
+
+        .collum1{
+            background: rgb(255, 131, 131);
+            border: none;
+            border-radius: 5px;
+            height: 40vh;
+            width: calc(100vw/2);
+            transition: 0.5s;
+            font-family: 'Poppins',sans-serif;
+            font-size: 30px;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+            -webkit-user-drag: none;
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            -webkit-user-drag: none;
+        }
+
+        .collum2{
+            background: rgb(131, 255, 183);
+            border: none;
+            border-radius: 5px;
+            height: 40vh;
+            width: calc(100vw/2);
+            transition: 0.5s;
+            font-family: 'Poppins',sans-serif;
+            font-size: 30px;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+            -webkit-user-drag: none;
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            -webkit-user-drag: none;
+        }
+
+        #collumHover:hover{
+            width: calc((100vw/2) + 40px);
+            box-shadow: 0px 0px 90px 11px rgba(0, 0, 0, 0.25);
+        }
+
+        .spaceCollum{
+            width: 1cm;
+        }
+
+        .spaceCollum2{
+            width: 3cm;
+        }
+
+        #tableIcon{
+            width: 60%;
+            height: 60%;
+        }
+
+        
+
+        
+
+        
+    </style>
+</head>
+<body>
+    <div class="container-system" style="-webkit-app-region: drag; width: 100%; height: 0.8cm; top: 0">
+        <p style="font-size:10px; text-align:center; font-family: 'Poppins',sans-serif;">TeachDesk - Version 1.0-BETA-1</p>
+    </div>
+    <img src="../icons/icon.png" id="icon" alt="teachdesk-icon">
+
+    <!-- TODO: Maby add a Button (selector) where, you can select saved Classes -->
+
+
+    <div class="line"></div>
+    <div class="container">
+
+
+        <table class="table">
+            <thead>
+            <tr>
+                <td class="spaceCollum2"></td>
+                <td id="collumHover" class="collum1">
+                    <img id="tableIcon" src="../icons/shuffle.svg">
+                    <p>Zufälliger Schüler</p>
+                </td>
+                <td class="spaceCollum"></td>
+                <td id="collumHover" class="collum2">
+                    <img id="tableIcon" src="../icons/user-group.svg">
+                    <p>Gruppen bilden</p>
+                </td>
+                <td class="spaceCollum2"></td>
+            </tr>
+            </thead>
+            </table>
+    </div>
+    
+    
+<script src="./js/index.renderer.js"></script>
+
+</body>
+</html>
