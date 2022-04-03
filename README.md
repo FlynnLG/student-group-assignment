@@ -77,3 +77,5 @@ And open the Teachdesk executable
 - Added Terms
 - Student Teachdesk is now in InDev Access!
 - bug fixed
+
+### Relase Version 1.0.0 [Beta]
