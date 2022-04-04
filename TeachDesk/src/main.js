@@ -6,6 +6,10 @@ const path = require('path')
 const fs = require('fs');
 var {firstStart} = require('./.localdata/config.json')
 
+require(`update-electron-app`)({
+    repo: 'https://github.com/FlynnLG/student-group-assignment',
+    updateInterval: '1 hour',
+})
 
 const createWindow = () => {
   // Create the browser window.
