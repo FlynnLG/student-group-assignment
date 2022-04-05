@@ -448,7 +448,7 @@ function shuffle(array) {
 
 function addStudent(){
     //TODO: Remove InnerHTML because Security!
-    studentName = document.querySelector('#newstudent input').value;
+    studentName = escapeHtml(document.querySelector('#newstudent input').value);
         studentCount ++;
         if(studentCount > 6){document.querySelector('#students').style = "overflow-y : scroll;"}
         changeCreateGroupsButton()
@@ -478,7 +478,7 @@ function addStudent(){
 }
 
 function addSpecialUser(role){
-    studentName = document.querySelector('#newstudent input').value;
+    studentName = escapeHtml(document.querySelector('#newstudent input').value);
         studentCount ++;
         if(studentCount > 6){document.querySelector('#students').style = "overflow-y : scroll;"}
         changeCreateGroupsButton()
@@ -520,6 +520,15 @@ function changeCreateGroupsButton(){
     if (studentCount < groupSize){
             document.querySelector('#createGroups').style.backgroundColor = "#ff444e";
     }else document.querySelector('#createGroups').style.backgroundColor = "#0962c7";
+}
+
+function escapeHtml(unsafe) {
+    return unsafe
+         .replace(/&/g, "&amp;")
+         .replace(/</g, "&lt;")
+         .replace(/>/g, "&gt;")
+         .replace(/"/g, "&quot;")
+         .replace(/'/g, "&#039;");
 }
     </script>
 </body>
