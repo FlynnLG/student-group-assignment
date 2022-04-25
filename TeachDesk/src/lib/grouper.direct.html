@@ -320,31 +320,17 @@ h3{
             }
         }
 
-    document.querySelector('#add').onclick = function(){ //TODO: Mit Enter Schülername auch hinzufügen! Angenehmer
-    var _donevar = false;
-    input = document.querySelector('#newstudent input').value
+    document.querySelector('#add').onclick = function(){
+        addStudentToList()
+    }
 
-    if(document.querySelector('#newstudent input').value.length == 0){
-        alert("Sie haben keinen Schülernamen eingegeben!")
-        _donevar = true
-    }
-    //Special User #################################################################################################
-    if(input == "Lennard"){addSpecialUser("crown"); ; _donevar = true} //Lennard 
-    if(input == specialUser[1]){addSpecialUser("astronaut"); _donevar = true} //Valentino
-    if(input == specialUser[2]){addSpecialUser("undercover"); _donevar = true} //Paul
-    if(input == specialUser[3]){addSpecialUser("ghost"); _donevar = true} //Clemens
-    if(input == specialUser[4]){addSpecialUser("ninja"); _donevar = true} //Linus
-    if(input == specialUser[5]){addSpecialUser("diktator"); _donevar = true} //Richard
-    if(input == specialUser[6]){addSpecialUser("snowman"); _donevar = true} //Andras
-    if(input == specialUser[7]){addSpecialUser("student"); _donevar = true} //Magnus
-    if(input == specialUser[8]){addSpecialUser("hottub"); _donevar = true} //Julius
-    //Normal User #################################################################################################
-    else{
-        if(_donevar == false){
-            addStudent();
+    document.getElementById("input").addEventListener("keyup", function(event) {
+        event.preventDefault();
+        if (event.keyCode === 13) {
+            addStudentToList();
         }
-    }
-}
+    })
+
 document.querySelector('#minusIcon').onclick = function(){
     if(groupSize == 2){
         console.log(groupSize); 
@@ -367,7 +353,31 @@ document.querySelector('#plusIcon').onclick = function(){
 
 
 
+function addStudentToList(){
+    var _donevar = false;
+    input = document.querySelector('#newstudent input').value
 
+    if(document.querySelector('#newstudent input').value.length == 0){
+        alert("Sie haben keinen Schülernamen eingegeben!")
+        _donevar = true
+    }
+    //Special User #################################################################################################
+    if(input == "Lennard"){addSpecialUser("crown"); ; _donevar = true} //Lennard
+    if(input == specialUser[1]){addSpecialUser("astronaut"); _donevar = true} //Valentino
+    if(input == specialUser[2]){addSpecialUser("undercover"); _donevar = true} //Paul
+    if(input == specialUser[3]){addSpecialUser("ghost"); _donevar = true} //Clemens
+    if(input == specialUser[4]){addSpecialUser("ninja"); _donevar = true} //Linus
+    if(input == specialUser[5]){addSpecialUser("diktator"); _donevar = true} //Richard
+    if(input == specialUser[6]){addSpecialUser("snowman"); _donevar = true} //Andras
+    if(input == specialUser[7]){addSpecialUser("student"); _donevar = true} //Magnus
+    if(input == specialUser[8]){addSpecialUser("hottub"); _donevar = true} //Julius
+    //Normal User #################################################################################################
+    else{
+        if(_donevar == false){
+            addStudent();
+        }
+    }
+}
 
 function getAllStudents(){
     //TODO: Remove InnerHTML because Security!
