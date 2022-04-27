@@ -8,3 +8,5 @@ cd ..
 
 echo Building...
 npm run publish
+
+cd out
