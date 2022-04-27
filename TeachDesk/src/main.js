@@ -8,7 +8,7 @@ const fs = require('fs');
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    icon: __dirname + '/Bluetooth.ico',
+    icon: (__dirname + 'icons/index.png'),
     width: 1600,
     height: 1000,
     titleBarStyle: 'hidden',
