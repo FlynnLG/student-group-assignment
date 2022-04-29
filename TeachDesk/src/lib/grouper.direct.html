@@ -57,7 +57,7 @@ h3{
     left: 50%;
 		background: rgb(131, 255, 183);
 		border-radius: 10px;
-        box-shadow: 0px 0px 90px 4px rgba(0, 0, 0, 0.25);
+        box-shadow: 0 0 90px 4px rgba(0, 0, 0, 0.25);
 }
 .container-result{
     width: 100%;
@@ -70,12 +70,12 @@ h3{
     left: 50%;
 		background: rgb(131, 255, 183);
 		border-radius: 10px;
-        box-shadow: 0px 0px 90px 4px rgba(0, 0, 0, 0.25);
+        box-shadow: 0 0 90px 4px rgba(0, 0, 0, 0.25);
 }
 #result{
     display: none;
 }
-.container-result :first{
+.container-result :before{
     border-left:solid 1px black;
 }
 
@@ -162,10 +162,9 @@ h3{
     margin-bottom: 10px;
     border-radius: 10px;
     width: 100%;
-    max-height: 10.5cm;
     max-height: 7cm;
     position: relative;
-    overflow-y : none;
+    overflow-y : unset;
     overflow-x: hidden;
 }
 #studentsResultNotInGroup{
@@ -175,14 +174,13 @@ h3{
     margin-bottom: 10px;
     border-radius: 10px;
     width: 90%;
-    max-height: 10.5cm;
     max-height: 12cm;
     display: none;
     top: 60%;
     left: 50%;
     transform: translate(-50%, -0%);
     position: relative;
-    overflow-y : none;
+    overflow-y : unset;
     overflow-x: hidden;
 }
 .student{
@@ -278,11 +276,11 @@ h3{
     </div>
     <div class="container">
         <div id="newstudent">
-            <input id="input" type="text" placeholder="Schülernamen hinzufügen...">
+            <label for="input">input</label><input id="input" type="text" placeholder="Schülernamen hinzufügen...">
             <button id="add">Hinzufügen</button> <br>
-            <img src="../icons/minus.svg" id="minusIcon">
-            <input id="groupSize" value="2">
-            <img src="../icons/plus.svg" id="plusIcon">
+            <img src="../icons/minus.svg" id="minusIcon" alt="">
+            <label for="groupSize">groupSize</label><input id="groupSize" value="2">
+            <img src="../icons/plus.svg" id="plusIcon" alt="">
             <button id="createGroups">Bilde Gruppen</button>
         </div>
         <div id="students"></div>
@@ -295,7 +293,7 @@ h3{
             </div>
         </div>
     </div>
-    <img class="back"  onclick="window.location.href = './index.html'" src="../icons/arrow-back.svg">
+    <img class="back"  onclick="window.location.href = './index.html'" src="../icons/arrow-back.svg" alt="">
 
     <!--Script-------------------------------------------------------------->
     <script type="text/javascript">
@@ -326,13 +324,13 @@ h3{
 
     document.getElementById("input").addEventListener("keyup", function(event) {
         event.preventDefault();
-        if (event.keyCode === 13) {
+        if (event.key === 'Enter') {
             addStudentToList();
         }
     })
 
 document.querySelector('#minusIcon').onclick = function(){
-    if(groupSize == 2){
+    if(groupSize === 2){
         console.log(groupSize); 
     }else{
     groupSize --;
@@ -357,25 +355,42 @@ function addStudentToList(){
     var _donevar = false;
     input = document.querySelector('#newstudent input').value
 
-    if(document.querySelector('#newstudent input').value.length == 0){
+    if(document.querySelector('#newstudent input').value.length === 0){
         alert("Sie haben keinen Schülernamen eingegeben!")
         _donevar = true
     }
     //Special User #################################################################################################
-    if(input == "Lennard"){addSpecialUser("crown"); ; _donevar = true} //Lennard
-    if(input == specialUser[1]){addSpecialUser("astronaut"); _donevar = true} //Valentino
-    if(input == specialUser[2]){addSpecialUser("undercover"); _donevar = true} //Paul
-    if(input == specialUser[3]){addSpecialUser("ghost"); _donevar = true} //Clemens
-    if(input == specialUser[4]){addSpecialUser("ninja"); _donevar = true} //Linus
-    if(input == specialUser[5]){addSpecialUser("diktator"); _donevar = true} //Richard
-    if(input == specialUser[6]){addSpecialUser("snowman"); _donevar = true} //Andras
-    if(input == specialUser[7]){addSpecialUser("student"); _donevar = true} //Magnus
-    if(input == specialUser[8]){addSpecialUser("hottub"); _donevar = true} //Julius
-    //Normal User #################################################################################################
-    else{
-        if(_donevar == false){
-            addStudent();
-        }
+    if(input === "Lennard"){
+        addSpecialUser("crown");
+        _donevar = true} //Lennard
+    else if(input === specialUser[1]){
+        addSpecialUser("astronaut");
+        _donevar = true} //Valentino
+    else if(input === specialUser[2]){
+        addSpecialUser("undercover");
+        _donevar = true} //Paul
+    else if(input === specialUser[3]){
+        addSpecialUser("ghost");
+        _donevar = true} //Clemens
+    else if(input === specialUser[4]){
+        addSpecialUser("ninja");
+        _donevar = true} //Linus
+    else if(input === specialUser[5]){
+        addSpecialUser("diktator");
+        _donevar = true} //Richard
+    else if(input === specialUser[6]){
+        addSpecialUser("snowman");
+        _donevar = true} //Andras
+    else if(input === specialUser[7]){
+        addSpecialUser("student");
+        _donevar = true} //Magnus
+    else if(input === specialUser[8]) {
+        addSpecialUser("hottub");
+        _donevar = true //Julius
+        //Normal User
+    }
+    if(_donevar === false){
+        addStudent();
     }
 }
 
@@ -398,11 +413,11 @@ function getAllStudents(){
                     studentListCheck.shift();
                 }
                 break;
-            } else if(f == groupSize-2) {
+            } else if(f === groupSize-2) {
                 console.log("N1");
                 studentGroupString = studentGroupString + `${studentListCheck[0]} und `
                 studentListCheck.shift();
-            } else if(f == groupSize-1) {
+            } else if(f === groupSize-1) {
                 console.log("N2");
                 studentGroupString = studentGroupString + `${studentListCheck[0]}`
                 studentListCheck.shift();
@@ -415,7 +430,7 @@ function getAllStudents(){
         console.log(studentGroupString);
         document.querySelector('#studentsResult').innerHTML += `
             <div class="group">
-                <img src="../icons/user-group.svg" id="userIcon">
+                <img src="../icons/user-group.svg" id="userIcon" alt="">
                 <span id="studentname">` + `
                     ${studentGroupString}
                 </span>
@@ -428,15 +443,13 @@ function getAllStudents(){
         document.getElementById('studentsResultNotInGroup').style.display = 'block';
 
     }
-    return;
 }
-
 
 function shuffle(array) {
   let currentIndex = array.length,  randomIndex;
 
   // While there remain elements to shuffle...
-  while (currentIndex != 0) {
+  while (currentIndex !== 0) {
 
     // Pick a remaining element...
     randomIndex = Math.floor(Math.random() * currentIndex);
@@ -464,7 +477,7 @@ function addStudent(){
         changeCreateGroupsButton()
         document.querySelector('#students').innerHTML += `
             <div class="student">
-                <img src="../icons/user.svg" id="userIcon">
+                <img src="../icons/user.svg" id="userIcon" alt="">
                 <span id="studentname">
                     ${studentName}
                 </span>
@@ -494,7 +507,7 @@ function addSpecialUser(role){
         changeCreateGroupsButton()
         document.querySelector('#students').innerHTML += `
             <div class="student">
-                <img src="../icons/roles/${role}.svg" id="userIcon">
+                <img src="../icons/roles/${role}.svg" id="userIcon" alt="">
                 <span id="studentname">
                     ${studentName}
                 </span>
