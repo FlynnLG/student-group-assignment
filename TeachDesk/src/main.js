@@ -4,6 +4,7 @@
 const { app, BrowserWindow } = require('electron')
 const path = require('path')
 const fs = require('fs');
+const {create} = require("./tray");
 
 const createWindow = () => {
   // Create the browser window.
@@ -45,8 +46,9 @@ app.whenReady().then(() => {
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
 // explicitly with Cmd + Q.
+// ADDED CLOSING MACOS WHEN CLOSING ALL WINDOWS
 app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') app.quit()
+  app.quit()
 })
 
 // In this file you can include the rest of your app's specific main process
