@@ -1,4 +1,4 @@
-[![Version Info](https://img.shields.io/static/v1?label=Version&message=v.1.0.0@beta1&color=orange&style=for-the-badge)](https://github.com/FlynnLG/student-group-assignment/releases)
+[![Version Info](https://img.shields.io/static/v1?label=Version&message=v.1.0.0@beta2&color=orange&style=for-the-badge)](https://github.com/FlynnLG/student-group-assignment/releases)
 
 # Teachdesk Desktop
 A simple website to assign students in different group sizes.
