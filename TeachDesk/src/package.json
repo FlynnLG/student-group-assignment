@@ -7,7 +7,7 @@
     "lib": "lib"
   },
   "dependencies": {
-    "electron-nightly": "^19.0.0-nightly.20220209",
+    "electron-nightly": "^23.0.0-nightly.20221128",
     "update-electron-app": "^2.0.1"
   },
   "devDependencies": {},
